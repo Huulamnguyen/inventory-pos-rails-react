@@ -1,8 +1,11 @@
-import React from 'react';
-import {Navbar, Container, Button, Accordion} from 'react-bootstrap';
+import React, {useState, useEffect} from 'react';
+import NewStoreForm from '../components/NewStoreForm';
+import {Navbar, Container,ButtonGroup, Button, Accordion} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 function StoreList({user, setUser}) {
+
+    const [showNewStoreForm, setShowNewStoreForm] = useState(false)
 
     function handleLogOutClick(){
         fetch("/logout",{
@@ -13,6 +16,7 @@ function StoreList({user, setUser}) {
             }
         });
     }
+
     return (
         <>
         <Navbar>
@@ -29,20 +33,34 @@ function StoreList({user, setUser}) {
             </Container>
         </Navbar>
         <Container>
-            <Accordion>
-                <Accordion.Item eventKey="1">
-                    <Accordion.Header>Store #1</Accordion.Header>
-                        <Accordion.Body>
-                            Address: 123 Main Street, Suite 330, Boston, MA
-                        </Accordion.Body>
-                    </Accordion.Item>
-                    <Accordion.Item eventKey="2">
-                        <Accordion.Header>Store #2</Accordion.Header>
-                        <Accordion.Body>
-                            Address: 456 South Street, Brooklyn, NY 11235
-                        </Accordion.Body>
-                    </Accordion.Item>
-            </Accordion>
+            <p>Welcome, {user.username}! You have {user.stores.length} stores to run</p>
+            {user.stores.length ? 
+            (   
+                <>
+                <Accordion>
+                    {user.stores.map((store) => (
+                        <Accordion.Item key={store.id} eventKey={store.id}>
+                            <Accordion.Header>Store Name: {store.store_name}</Accordion.Header>
+                            <Accordion.Body>
+                                <p>Address: {store.address}</p>
+                                <ButtonGroup>
+                                    <Button variant="outline-dark">Edit</Button>
+                                    <Button variant="outline-dark">Delete</Button>
+                                    <Button variant="outline-dark">Manage</Button>
+                                </ButtonGroup>
+                            </Accordion.Body>
+                        </Accordion.Item>
+                    ))}
+                </Accordion>
+                <Button onClick={() => setShowNewStoreForm(!showNewStoreForm)} className="mt-3 mb-3" variant="outline-dark">{showNewStoreForm?"Cancel":"Add New Store"}</Button>
+                {showNewStoreForm?<NewStoreForm user={user} setShowNewStoreForm={setShowNewStoreForm} />:null}
+                </>
+            ):( 
+                <>
+                <Button onClick={() => setShowNewStoreForm(!showNewStoreForm)} className="mt-3 mb-3" variant="outline-dark">Create New Store</Button>
+                {showNewStoreForm?<NewStoreForm user={user} setShowNewStoreForm={setShowNewStoreForm} />:null}
+                </>
+            )}
         </Container>
         </>
     )
