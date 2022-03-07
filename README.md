@@ -16,6 +16,17 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - React
 - [React-Bootstrap](https://react-bootstrap.netlify.app/)
 
+## Models
+[Inventory&POS Application Models](https://dbdiagram.io/d/6220cc6854f9ad109a53a3a3)
+
+## Features:
+
+- Done: User can sign-up and create a new account
+- Done: User can login with an created account
+- Done: User can logout account
+- Done: User can edit information such as username, email, address, phone
+- Done: If forgot password, user can reset password
+
 ## Deploying
 
 This application has been deployed your to Heroku. 
