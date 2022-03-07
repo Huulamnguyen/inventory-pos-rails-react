@@ -38,6 +38,7 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 
 ## Test Application
 
+### Local
 - Fork and clone this repo
 - cd to `P-4-5-FINAL-PROJECT-INVENTORY-POS` file
 - `bundle install` => to install all dependencies for Rails Back-end App
@@ -45,9 +46,6 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - `rails s` => to run server for Rails Back-end App
 - `npm start --prefix client` => to run server fro React Front-end App
 - Note: this application is built with Postgresql
-## Deploying
 
-This application has been deployed your to Heroku. 
-It's recommended to deploy your project early and push up
-changes often to ensure that your code works equally well in production and
-development environments.
+## Deployment:
+- Latest Version of [Inventory & POS application](https://inventory-pos-final.herokuapp.com/)
