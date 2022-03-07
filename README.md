@@ -21,12 +21,20 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 
 ## Features:
 
-- Done: User can sign-up and create a new account
-- Done: User can login with an created account
-- Done: User can logout account
-- Done: User can edit information such as username, email, address, phone
-- Done: If forgot password, user can reset password
+### Done:
+- User can sign-up and create a new account
+- User can login with a created and authorized account
+- User can logout account
+- User can edit information such as username, email, address, phone
+- If forgot password, user can reset password
 
+### In Progress:
+- User can create a or many stores
+- User can edit an existing store
+- User can view a store information
+- User can delete a store
+
+### Up coming:
 
 ## Test Application
 
