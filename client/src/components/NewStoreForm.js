@@ -2,7 +2,7 @@ import React, { useState }  from 'react';
 
 import {Form, Button, Alert } from 'react-bootstrap'
 
-function NewStoreForm({user, setShowNewStoreForm}){
+function NewStoreForm({user, setShowNewStoreForm, setStores, stores}){
 
     const [storeName, setStoreName] = useState("");
     const [address, setAddress] = useState("");
@@ -23,7 +23,7 @@ function NewStoreForm({user, setShowNewStoreForm}){
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
-                r.json().then(store => store).then(setShowNewStoreForm(false))
+                r.json().then(store => setStores([...stores, store])).then(setShowNewStoreForm(false))
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }

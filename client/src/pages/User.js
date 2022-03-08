@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import UpdateUserForm from '../components/UpdateUserForm';
 import {Link} from 'react-router-dom';
-import {Container, Navbar, Table, Button} from 'react-bootstrap';
+import {Container, Table, Button, Alert} from 'react-bootstrap';
 
 function User({user, setUser}){
 
@@ -9,9 +9,7 @@ function User({user, setUser}){
 
     return (
         <Container>
-            <Navbar>
-                <Navbar.Brand>Welcome, {user.username}!</Navbar.Brand>
-            </Navbar>
+            <Alert>Welcome, {user.username}!</Alert>
             <Table striped bordered hover size="sm">
                 <thead>
                     <tr>
