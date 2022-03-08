@@ -4,6 +4,8 @@
 - Latest Version of [Inventory & POS application](https://inventory-pos-final.herokuapp.com/)
 ## Description
 
+![Inventory-pos](client/src/images/inventory-pos-final-project.png)
+
 This project is built a React frontend and Rails
 backend together, and easily deploy them to Heroku.
 The idea of building an inventory system that integrated POS features that allows user to manage inventory and make sale in one place.
