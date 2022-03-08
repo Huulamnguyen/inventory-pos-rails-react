@@ -1,5 +1,7 @@
 # Project Inventory & POS Application by Rails and React
 
+## Deployment:
+- Latest Version of [Inventory & POS application](https://inventory-pos-final.herokuapp.com/)
 ## Description
 
 This project is built a React frontend and Rails
@@ -27,17 +29,24 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - User can logout account
 - User can edit information such as username, email, address, phone
 - If forgot password, user can reset password
-
-### In Progress:
 - User can create a or many stores
 - User can edit an existing store
 - User can view a store information
 - User can delete a store
 
+### In Progress:
+- View all products
+- Update product
+- Create a new product
+- Delete a product
+
 ### Up coming:
+- View one product: information and sale transactions
+- Filter products by categories
+- Filter products by brands
+- Filter products by suppliers
 
 ## Test Application
-
 ### Local
 - Fork and clone this repo
 - cd to `P-4-5-FINAL-PROJECT-INVENTORY-POS` file
@@ -46,6 +55,3 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - `rails s` => to run server for Rails Back-end App
 - `npm start --prefix client` => to run server fro React Front-end App
 - Note: this application is built with Postgresql
-
-## Deployment:
-- Latest Version of [Inventory & POS application](https://inventory-pos-final.herokuapp.com/)
