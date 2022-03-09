@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import UpdateUserForm from '../components/UpdateUserForm';
-import {Link} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import {Container, Table, Button, Alert} from 'react-bootstrap';
 
 function User({user, setUser}){
-
+    const navigate = useNavigate();
     const [showUpdateUserForm, setShowUpdateUserForm] = useState(false)
 
     return (
@@ -36,7 +36,7 @@ function User({user, setUser}){
                     </tr>
                 </tbody>
             </Table>
-            <Button as={Link} to="/" variant="outline-dark">Back</Button>
+            <Button onClick={() => navigate(-1)} variant="outline-dark">Back</Button>
             <Button onClick={() => setShowUpdateUserForm(!showUpdateUserForm)} className="m-3" variant="dark">{showUpdateUserForm?"Cancel":"Edit"}</Button>
             {showUpdateUserForm ? <UpdateUserForm user={user} setUser={setUser} setShowUpdateUserForm={setShowUpdateUserForm} /> : null}
         </Container>
