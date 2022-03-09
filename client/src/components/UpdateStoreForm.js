@@ -41,7 +41,7 @@ function UpdateStoreForm({store, setShowUpdateStoreForm, setDisplayedStore}){
                     />
             </Form.Group>
             <Form.Group className="mb-3">
-                <Form.Label>Password</Form.Label>
+                <Form.Label>Address</Form.Label>
                 <Form.Control 
                     id="address" 
                     type="text" 

@@ -1,5 +1,6 @@
 import React from 'react';
 import {Table, Figure} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 function ProductTable({products}) {
 
@@ -22,7 +23,7 @@ function ProductTable({products}) {
                 {products.map(product => (
                     <tr key ={product.id}>
                         <td><Figure.Image width={50} alt={product.title} src={product.image}></Figure.Image></td>
-                        <td>{product.title}</td>
+                        <td><Link to={`/products/${product.id}`} state={product}>{product.title}</Link></td>
                         <td>{product.inventory}</td>
                         <td>${product.retail_price}</td>
                         <td>Supplier Name</td>

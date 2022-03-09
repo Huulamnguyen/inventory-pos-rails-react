@@ -6,9 +6,8 @@
 
 ![Inventory-pos](client/src/images/inventory-pos-final-project.png)
 
-This project is built a React frontend and Rails
-backend together, and easily deploy them to Heroku.
-The idea of building an inventory system that integrated POS features that allows user to manage inventory and make sale in one place.
+This project is about a React frontend and Rails backend Application which is deployed on Heroku.
+The idea of building an inventory system that integrated POS features that allows users to manage inventory and sales in one place.
 The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-based application.
 
 ## Tech-Stack
