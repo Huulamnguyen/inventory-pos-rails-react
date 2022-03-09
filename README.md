@@ -35,9 +35,10 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - User can edit an existing store
 - User can view a store information
 - User can delete a store
+- View all products
+- Search product by title
 
 ### In Progress:
-- View all products
 - Update product
 - Create a new product
 - Delete a product
@@ -57,3 +58,7 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - `rails s` => to run server for Rails Back-end App
 - `npm start --prefix client` => to run server fro React Front-end App
 - Note: this application is built with Postgresql
+
+## Improvement & Bugs
+- Refreshing the page, it shows a json format page. It seems heroku confused two port for front-end and back-end (Version Deployed on Heroku)
+- After creating a new store, click manage => it shows an error. However, it can be fixed after refreshing the page. 
