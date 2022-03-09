@@ -1,22 +1,29 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Container, Row, Col, Figure, Table, Button, ButtonGroup} from 'react-bootstrap';
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate} from 'react-router-dom'
+import ProductUpdateForm from '../components/ProductUpdateForm';
 
 function ProductDetail () {
     const location = useLocation()
+    const navigate = useNavigate();
     const product = location.state
-
-    console.log(product)
+    const [displayedProduct, setDisplayedProduct] = useState(product)
+    const [showProductUpdateFrom, setShowProductUpdateFrom] = useState(false)
     return (
         <Container>
+            <Row>
+                <Col xs="auto"><Button className="mt-2" onClick={() => navigate(-1)} variant="outline-dark">Back</Button></Col>
+                <Col><div className="alert alert-primary">{displayedProduct.title}</div></Col>
+                {/* <Col xs="auto"><Button className="mt-2" variant="outline-dark">Sale</Button></Col> */}
+            </Row>
             <Row>
                 <Col sm={4} md="auto">
                     <Figure>
                     <Figure.Image
                         width={300}
                         height={180}
-                        alt={product.title}
-                        src={product.image}
+                        alt={displayedProduct.title}
+                        src={displayedProduct.image}
                     />
                     </Figure>                
                 </Col>
@@ -31,19 +38,23 @@ function ProductDetail () {
                         <tbody>
                             <tr>
                                 <td>Title</td>
-                                <td>{product.title}</td>
+                                <td>{displayedProduct.title}</td>
                             </tr>
                             <tr>
                                 <td>Description</td>
-                                <td>{product.description}</td>
+                                <td>{displayedProduct.description}</td>
                             </tr>
                             <tr>
                                 <td>Inventory</td>
-                                <td>{product.inventory}</td>
+                                <td>{displayedProduct.inventory}</td>
                             </tr>
                             <tr>
                                 <td>Retail Price</td>
-                                <td>${product.retail_price}</td>
+                                <td>${displayedProduct.retail_price}</td>
+                            </tr>
+                            <tr>
+                                <td>SKU</td>
+                                <td>{displayedProduct.SKU}</td>
                             </tr>
                             <tr>
                                 <td>Category</td>
@@ -63,9 +74,12 @@ function ProductDetail () {
             </Row>
             <Row className="justify-content-md-center">
             <ButtonGroup>
-                <Button className="m-3" variant="outline-dark">Edit</Button>
+                <Button onClick={() => setShowProductUpdateFrom(!showProductUpdateFrom)}className="m-3" variant="outline-dark">{showProductUpdateFrom ? "Cancel": "Edit"}</Button>
                 <Button className="m-3" variant="outline-dark">Delete</Button>
             </ButtonGroup>
+            </Row>
+            <Row className="mb-3">
+                {showProductUpdateFrom ? <ProductUpdateForm setShowProductUpdateFrom={setShowProductUpdateFrom} product={displayedProduct} setDisplayedProduct={setDisplayedProduct}/> : null}
             </Row>
             
         </Container>

@@ -6,6 +6,7 @@ import ProductPage from '../pages/ProductPage';
 import ProductDetail from '../pages/ProductDetail';
 import NavBar from './NavBar';
 import { Routes, Route, useNavigate } from "react-router-dom";
+import {Alert, Container} from 'react-bootstrap';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -29,12 +30,18 @@ function App() {
             setUser(null);
         }
     });
-    
     // Navigate to home page after logout and clear history
     navigate("/");
 }
 
-  if (!user) return <Login onLogin={setUser} />;
+  if (!user) return (
+    <>
+    <Container>
+      <Alert className="mt-3" variant="primary" >Please Login OR Signup To Create A New Account</Alert>
+    </Container>
+    <Login onLogin={setUser}/>
+    </>
+  )
 
   return (
     <div>
