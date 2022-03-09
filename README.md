@@ -36,9 +36,9 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - User can delete a store
 - View all products
 - Search product by title
+- Update product
 
 ### In Progress:
-- Update product
 - Create a new product
 - Delete a product
 
