@@ -1,9 +1,7 @@
 import React, { useState }  from 'react';
-
 import {Form, Button, Alert } from 'react-bootstrap'
 
 function NewStoreForm({user, setShowNewStoreForm, setStores, stores}){
-
     const [storeName, setStoreName] = useState("");
     const [address, setAddress] = useState("");
     const [errors, setErrors] = useState([]);
