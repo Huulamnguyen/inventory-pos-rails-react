@@ -2,6 +2,7 @@
 
 ## Deployment:
 - Latest Version of [Inventory & POS application](https://inventory-pos-final.herokuapp.com/)
+- Test Account: test1@gmail.com | pw: 123
 ## Description
 
 ![Inventory-pos](client/src/images/inventory-pos-final-project.png)
