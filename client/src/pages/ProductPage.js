@@ -33,7 +33,7 @@ function ProductPage({user}){
             <Row>
                 <Tabs id="controlled-tab" activeKey={defaultTab} onSelect={(k) => setDefaultTab(k)} className="mb-3">
                     <Tab eventKey="product" title="Product">
-                        <ProductList products={products}/>
+                        <ProductList products={products} storeId={storeId}/>
                     </Tab>
                     <Tab eventKey="categories" title="Categories">
                         <p>Categories List</p>

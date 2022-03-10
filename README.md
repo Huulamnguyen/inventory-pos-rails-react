@@ -37,9 +37,9 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - View all products
 - Search product by title
 - Update product
+- Create a new product
 
 ### In Progress:
-- Create a new product
 - Delete a product
 
 ### Up coming:

@@ -4,6 +4,7 @@ import StoreList from '../pages/StoreList';
 import User from '../pages/User';
 import ProductPage from '../pages/ProductPage';
 import ProductDetail from '../pages/ProductDetail';
+import NewProductForm from './NewProductForm';
 import NavBar from './NavBar';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import {Alert, Container} from 'react-bootstrap';
@@ -47,6 +48,7 @@ function App() {
     <div>
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
+        <Route path="/products/new" element={<NewProductForm />} />
         <Route path="products/:id" element={<ProductDetail />} />
         <Route path="/stores/:id" element={<ProductPage user={user} />} />
         <Route path="/users" element={<User user={user} setUser={setUser} />} />

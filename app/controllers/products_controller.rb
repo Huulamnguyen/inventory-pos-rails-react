@@ -17,6 +17,11 @@ class ProductsController < ApplicationController
         render json: product, status: :ok
     end
 
+    def create
+        product = Product.create!(product_params)
+        render json: product, status: :created
+    end
+
     private
     
     def find_product
