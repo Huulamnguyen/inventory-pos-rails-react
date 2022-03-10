@@ -22,6 +22,12 @@ class ProductsController < ApplicationController
         render json: product, status: :created
     end
 
+    def destroy
+        product = find_product
+        product.destroy
+        head :no_content
+    end
+
     private
     
     def find_product

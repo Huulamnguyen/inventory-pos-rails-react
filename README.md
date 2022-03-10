@@ -35,18 +35,19 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - User can view a store information
 - User can delete a store
 - View all products
+- View one product: information and sale transactions
 - Search product by title
 - Update product
 - Create a new product
-
-### In Progress:
 - Delete a product
 
-### Up coming:
-- View one product: information and sale transactions
+### In Progress:
 - Filter products by categories
 - Filter products by brands
 - Filter products by suppliers
+
+### Up coming:
+- Data DashBoard for product
 
 ## Test Application
 ### Local
