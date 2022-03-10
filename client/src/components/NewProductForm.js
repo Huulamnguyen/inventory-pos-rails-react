@@ -1,43 +1,60 @@
 import React, { useState } from 'react';
-import {Form, Button, Alert } from 'react-bootstrap';
+import {Form, Button, Alert, Container, Row, Col} from 'react-bootstrap';
+import {useLocation, useNavigate} from 'react-router-dom';
 
-function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFrom}){
-
-    const [title, setTitle] = useState(product.title);
-    const [description, setDescription] = useState(product.description);
-    const [inventory, setInventory] = useState(product.inventory);
-    const [retailPrice, setRetailPrice] = useState(product.retail_price);
-    const [sku, setSku] = useState(product.SKU);
-    const [image, setImage] = useState(product.image);
+function NewProductForm () {
+    const location = useLocation()
+    const storeId = location.state
+    const navigate = useNavigate();
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [inventory, setInventory] = useState("");
+    const [retailPrice, setRetailPrice] = useState("");
+    const [sku, setSku] = useState("");
+    const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
-    function handleSubmit(e) {
+    function handleSubmit(e){
         e.preventDefault();
-
-        const updatedProduct = {
+        const newProduct = {
             title: title,
             description: description,
             inventory: inventory,
             retail_price: retailPrice,
             SKU: sku,
-            image: image
+            image: image,
+            store_id: storeId
         }
-        fetch(`/products/${product.id}`,{
-            method: "PATCH",
-            headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(updatedProduct)
+        fetch("/products", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json"},
+            body: JSON.stringify(newProduct)
         }).then(r => {
             setIsLoading(false);
             if(r.ok){
-                r.json().then( product => setDisplayedProduct(product)).then(setShowProductUpdateFrom(false))
-            } else {
+                r.json().then(navigate(-1))
+            }else{
                 r.json().then(err => setErrors(err.errors))
             }
         })
+
+        setTitle("");
+        setDescription("");
+        setInventory("");
+        setRetailPrice("");
+        setSku("");
+        setImage("");
     }
+    
 
     return (
+        <Container>
+        <Row>
+                <Col xs="auto"><Button className="mt-2" onClick={() => navigate(-1)} variant="outline-dark">Back</Button></Col>
+                <Col><div className="alert alert-primary">Add New Product</div></Col>
+                {/* <Col xs="auto"><Button className="mt-2" variant="outline-dark">Sale</Button></Col> */}
+        </Row>
         <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3">
                 <Form.Label>Title</Form.Label>
@@ -99,11 +116,13 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     onChange={(e) => setImage(e.target.value)}
                 />
             </Form.Group>
-            <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
+            <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Add New Product"}</Button>
             {errors.map(error => (
                 <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
             ))}
         </Form>
+        </Container>
     )
 }
-export default ProductUpdateForm;
+
+export default NewProductForm;
