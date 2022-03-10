@@ -9,12 +9,22 @@ function ProductDetail () {
     const product = location.state
     const [displayedProduct, setDisplayedProduct] = useState(product)
     const [showProductUpdateFrom, setShowProductUpdateFrom] = useState(false)
+
+    function handleDelete(){
+        fetch(`/products/${product.id}`, {
+            method: 'DELETE'
+        }).then(r => {
+            if(r.ok){
+                navigate(-1)
+            }
+        })
+    }
+
     return (
         <Container>
             <Row>
                 <Col xs="auto"><Button className="mt-2" onClick={() => navigate(-1)} variant="outline-dark">Back</Button></Col>
                 <Col><div className="alert alert-primary">{displayedProduct.title}</div></Col>
-                {/* <Col xs="auto"><Button className="mt-2" variant="outline-dark">Sale</Button></Col> */}
             </Row>
             <Row>
                 <Col sm={4} md="auto">
@@ -75,7 +85,7 @@ function ProductDetail () {
             <Row className="justify-content-md-center">
             <ButtonGroup>
                 <Button onClick={() => setShowProductUpdateFrom(!showProductUpdateFrom)}className="m-3" variant="outline-dark">{showProductUpdateFrom ? "Cancel": "Edit"}</Button>
-                <Button className="m-3" variant="outline-dark">Delete</Button>
+                <Button onClick={() => handleDelete()} className="m-3" variant="outline-dark">Delete</Button>
             </ButtonGroup>
             </Row>
             <Row className="mb-3">
