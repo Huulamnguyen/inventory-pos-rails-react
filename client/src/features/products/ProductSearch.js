@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
-import {Stack, Form, Button, Row, Col} from 'react-bootstrap';
+import React from 'react';
+import {Stack, Form, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-function ProductSearch({search, setSearch, storeId, categories, setCategoryId}){
+function ProductSearch({search, setSearch, storeId}){
 
     return (
         <>
