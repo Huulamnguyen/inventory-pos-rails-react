@@ -106,7 +106,7 @@ function SignUpForm({onLogin}){
                         onChange={(e) => setPhone(e.target.value)}
                     />
                 </Form.Group>
-                <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Login"}</Button>
+                <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
                 {errors.map(error => (
                     <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
                 ))}

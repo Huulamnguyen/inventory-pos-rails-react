@@ -1,14 +1,21 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Container, Row, Col, Figure, Table, Button, ButtonGroup} from 'react-bootstrap';
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate, useParams} from 'react-router-dom'
 import ProductUpdateForm from '../components/ProductUpdateForm';
 
 function ProductDetail () {
-    const location = useLocation()
     const navigate = useNavigate();
+    const location = useLocation();
     const product = location.state
     const [displayedProduct, setDisplayedProduct] = useState(product)
     const [showProductUpdateFrom, setShowProductUpdateFrom] = useState(false)
+
+    // const productId = parseInt(useParams().id)
+
+    // useEffect(() => {
+    //     fetch(`/products/${productId}`).then(r=>r.json()).then(product => setDisplayedProduct(product))
+    // }, [productId])
+
 
     function handleDelete(){
         fetch(`/products/${product.id}`, {
@@ -68,7 +75,7 @@ function ProductDetail () {
                             </tr>
                             <tr>
                                 <td>Category</td>
-                                <td>Category Name</td>
+                                {/* <td>{displayedProduct.categories.map(category => category.name)}</td> */}
                             </tr>
                             <tr>
                                 <td>Supplier</td>
@@ -85,7 +92,7 @@ function ProductDetail () {
             <Row className="justify-content-md-center">
             <ButtonGroup>
                 <Button onClick={() => setShowProductUpdateFrom(!showProductUpdateFrom)}className="m-3" variant="outline-dark">{showProductUpdateFrom ? "Cancel": "Edit"}</Button>
-                <Button onClick={() => handleDelete()} className="m-3" variant="outline-dark">Delete</Button>
+                {/* <Button onClick={() => handleDelete()} className="m-3" variant="outline-dark">Delete</Button> */}
             </ButtonGroup>
             </Row>
             <Row className="mb-3">

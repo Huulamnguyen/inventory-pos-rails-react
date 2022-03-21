@@ -7,9 +7,9 @@
 
 ![Inventory-pos](client/src/images/inventory-pos-final-project.png)
 
-This project is about a React frontend and Rails backend Application which is deployed on Heroku.
-The idea of building an inventory system that integrated POS features that allows users to manage inventory and sales in one place.
-The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-based application.
+- This project is building an inventory system that integrated POS features that allows users to manage inventory and sales in one place.
+- The project is built by React for frontend, Rails for backend Application, and deployed on Heroku.
+- The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-based application.
 
 ## Tech-Stack
 
@@ -20,12 +20,17 @@ The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-
 - React
 - [React-Bootstrap](https://react-bootstrap.netlify.app/)
 
+## Requirements:
+- Use a Rails API backend with a React frontend.
+- Have at least two models with a one-to-many relationship on the backend, with full CRUD actions for at least one resource.
+- Have at least two different client-side routes using React Router.
+- Implement authentication/authorization. At a minimum, a user should be able to log into the site and stay logged in via user ID in the session hash. 
+- Password protection is optional.
+- Testing
 ## Models
 [Inventory&POS Application Models](https://dbdiagram.io/d/6220cc6854f9ad109a53a3a3)
-
 ## Features:
-
-### Done:
+### Available Features:
 - User can sign-up and create a new account
 - User can login with a created and authorized account
 - User can logout account

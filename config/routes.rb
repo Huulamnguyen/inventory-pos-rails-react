@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
+  # resources :category_products
+  resources :categories, only: [:index, :show]
   resources :products, only: [:index, :show, :update, :create, :destroy]
+
   resources :stores, only: [:index, :show, :create, :update, :destroy]
   resources :users, only: [:update, :index]
 

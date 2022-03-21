@@ -3,7 +3,6 @@ import {Table, Figure} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 function ProductTable({products}) {
-
     return (
         <>
         <p className="mt-3">{products.length} products</p>
@@ -28,7 +27,7 @@ function ProductTable({products}) {
                         <td>${product.retail_price}</td>
                         <td>Supplier Name</td>
                         <td>Brand Name</td>
-                        <td>Category</td>
+                        <td>{product.categories.map(category => category.name)}</td>
                     </tr>
                 ))}
             </tbody>
