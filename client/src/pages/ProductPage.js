@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {Tabs, Tab, Container, Button, Row, Col} from 'react-bootstrap';
 import {useParams, useNavigate} from 'react-router-dom';
 import ProductList from '../components/ProductList';
+import CategoryList from '../components/CategoryList';
 
 function ProductPage({user}){
     const [defaultTab, setDefaultTab] = useState('product');
@@ -10,17 +11,29 @@ function ProductPage({user}){
     const store = user.stores.find(store => store.id === storeId);
 
     const [products, setProducts] = useState([]);
+    const [categories, setCategories] = useState([]);
+    
     function loadAllProducts(){
-        fetch(`/stores/${storeId}`)
+        fetch("/products")
             .then(r => {
                 if(r.ok){
-                    r.json().then(data => setProducts(data.products))
+                    r.json().then(products => products.filter(product => product.store.id === store.id)).then(products => setProducts(products))
                 }
             });
     }
 
+    function loadAllCategories(){
+        fetch("/categories")
+        .then(r => {
+            if(r.ok){
+                r.json().then(categories => setCategories(categories))
+            }
+        })
+    }
+
     useEffect(() => {
         loadAllProducts();
+        loadAllCategories();
     }, [])
 
     return (
@@ -33,10 +46,10 @@ function ProductPage({user}){
             <Row>
                 <Tabs id="controlled-tab" activeKey={defaultTab} onSelect={(k) => setDefaultTab(k)} className="mb-3">
                     <Tab eventKey="product" title="Product">
-                        <ProductList products={products} storeId={storeId}/>
+                        <ProductList setProducts={setProducts} products={products} storeId={storeId} categories={categories}/>
                     </Tab>
                     <Tab eventKey="categories" title="Categories">
-                        <p>Categories List</p>
+                        <CategoryList categories={categories}/>
                     </Tab>
                     <Tab eventKey="brand" title="Brand">
                         <p>Brand List</p>
