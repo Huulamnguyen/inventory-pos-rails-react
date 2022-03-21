@@ -1,31 +1,46 @@
 import React, { useState } from 'react';
 import {Form, Button, Alert, Container, Row, Col} from 'react-bootstrap';
 import {useLocation, useNavigate} from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import {productAdded} from "./productsSlice";
 
 function NewProductForm () {
     const location = useLocation()
     const storeId = location.state
     const navigate = useNavigate();
-    const [title, setTitle] = useState("");
-    const [description, setDescription] = useState("");
-    const [inventory, setInventory] = useState("");
-    const [retailPrice, setRetailPrice] = useState("");
-    const [sku, setSku] = useState("");
-    const [image, setImage] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const [formData, setFormData] = useState({
+        title: "",
+        description: "",
+        inventory: "",
+        retailPrice: "",
+        sku: "",
+        image: ""
+    });
+
+    const dispatch = useDispatch();
+
+    function handleChange(event) {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    }
 
     function handleSubmit(e){
         e.preventDefault();
         const newProduct = {
-            title: title,
-            description: description,
-            inventory: inventory,
-            retail_price: retailPrice,
-            SKU: sku,
-            image: image,
+            title: formData.title,
+            description: formData.description,
+            inventory: formData.inventory,
+            retail_price: formData.retailPrice,
+            SKU: formData.sku,
+            image: formData.image,
             store_id: storeId
         }
+
         fetch("/products", {
             method: 'POST',
             headers: { "Content-Type": "application/json"},
@@ -33,18 +48,20 @@ function NewProductForm () {
         }).then(r => {
             setIsLoading(false);
             if(r.ok){
-                r.json().then(navigate(-1))
+                r.json().then(product => dispatch(productAdded(product))).then(navigate(-1))
             }else{
                 r.json().then(err => setErrors(err.errors))
             }
         })
 
-        setTitle("");
-        setDescription("");
-        setInventory("");
-        setRetailPrice("");
-        setSku("");
-        setImage("");
+        setFormData({
+            title: "",
+            description: "",
+            inventory: "",
+            retailPrice: "",
+            sku: "",
+            image: ""
+        })
     }
     
 
@@ -62,8 +79,9 @@ function NewProductForm () {
                     id="title" 
                     type="text" 
                     autoComplete="off"
-                    value = {title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    name="title"
+                    value = {formData.title}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -72,8 +90,9 @@ function NewProductForm () {
                     id="description" 
                     type="text" 
                     autoComplete="off"
-                    value = {description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    name="description"
+                    value = {formData.description}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -82,8 +101,9 @@ function NewProductForm () {
                     id="inventory" 
                     type="number" 
                     autoComplete="off"
-                    value = {inventory}
-                    onChange={(e) => setInventory(e.target.value)}
+                    name="inventory"
+                    value = {formData.inventory}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -92,8 +112,9 @@ function NewProductForm () {
                     id="retailPrice" 
                     type="number" 
                     autoComplete="off"
-                    value = {retailPrice}
-                    onChange={(e) => setRetailPrice(e.target.value)}
+                    name="retailPrice"
+                    value = {formData.retailPrice}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -102,8 +123,9 @@ function NewProductForm () {
                     id="sku" 
                     type="text" 
                     autoComplete="off"
-                    value = {sku}
-                    onChange={(e) => setSku(e.target.value)}
+                    name="sku"
+                    value = {formData.sku}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -112,8 +134,9 @@ function NewProductForm () {
                     id="image" 
                     type="text" 
                     autoComplete="off"
-                    value = {image}
-                    onChange={(e) => setImage(e.target.value)}
+                    name="image"
+                    value = {formData.image}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Add New Product"}</Button>

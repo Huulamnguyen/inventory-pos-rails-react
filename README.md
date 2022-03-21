@@ -12,12 +12,12 @@
 - The idea is inspired by [VENDHQ.com](https://www.vendhq.com/), which is a cloud-based application.
 
 ## Tech-Stack
-
 - Ruby 2.7.4
 - NodeJS (v16), and npm
 - Heroku CLI
 - Postgresql
 - React
+- Redux
 - [React-Bootstrap](https://react-bootstrap.netlify.app/)
 
 ## Requirements:
@@ -31,30 +31,44 @@
 [Inventory&POS Application Models](https://dbdiagram.io/d/6220cc6854f9ad109a53a3a3)
 ## Features:
 ### Available Features:
+
+## Authentication and Authorization
 - User can sign-up and create a new account
 - User can login with a created and authorized account
 - User can logout account
+
+## User
 - User can edit information such as username, email, address, phone
 - If forgot password, user can reset password
+
+## User and Store
 - User can create a or many stores
 - User can edit an existing store
 - User can view a store information
 - User can delete a store
-- View all products
-- View one product: information and sale transactions
+
+## User and Product
+- View all products (improve state management by Redux: productsReducer)
+- View one product: information and sale transactions (coming soon)
 - Search product by title
 - Update product
-- Create a new product
-- Delete a product
+- Create a new product (improve state management by Redux: productsReducer)
+- Delete a product (improve state management by Redux: productsReducer)
 
+## Category and Product:
+- Each product show a category that it associated with
+- View all categories under categories menu and each category's products
 ### In Progress:
-- Filter products by categories
-- Filter products by brands
-- Filter products by suppliers
+- Create new Category
+- Edit Category
+- Delete Category
 
 ### Up coming:
-- Data DashBoard for product
-
+- Full CRUD for Category, Brand, Supplier, Variant models
+- Full CRUD for Sale Model
+- Full CRUD for Payment Model
+- Full CRUD for Customer Model
+- Building Data Dashboard
 ## Test Application
 ### Local
 - Fork and clone this repo
@@ -67,4 +81,4 @@
 
 ## Improvement & Bugs
 - Refreshing the page, it shows a json format page. It seems heroku confused two port for front-end and back-end (Version Deployed on Heroku)
-- After creating a new store, click manage => it shows an error. However, it can be fixed after refreshing the page. 
+- After adding a new product, it send an GET '/store/new', which is an undefined route

@@ -3,25 +3,36 @@ import {Form, Button, Alert } from 'react-bootstrap';
 
 function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFrom}){
 
-    const [title, setTitle] = useState(product.title);
-    const [description, setDescription] = useState(product.description);
-    const [inventory, setInventory] = useState(product.inventory);
-    const [retailPrice, setRetailPrice] = useState(product.retail_price);
-    const [sku, setSku] = useState(product.SKU);
-    const [image, setImage] = useState(product.image);
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+
+    const [formData, setFormData] = useState({
+        title: product.title,
+        description: product.description,
+        inventory: product.inventory,
+        retail_price: product.retail_price,
+        SKU: product.SKU,
+        image: product.image
+    })
+
+    function handleChange(event) {
+        setFormData({
+            ...formData,
+            [event.target.name]: event.target.value,
+        });
+    }
+
 
     function handleSubmit(e) {
         e.preventDefault();
 
         const updatedProduct = {
-            title: title,
-            description: description,
-            inventory: inventory,
-            retail_price: retailPrice,
-            SKU: sku,
-            image: image
+            title: formData.title,
+            description: formData.description,
+            inventory: formData.inventory,
+            retail_price: formData.retail_price,
+            SKU: formData.SKU,
+            image: formData.image
         }
         fetch(`/products/${product.id}`,{
             method: "PATCH",
@@ -45,8 +56,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="title" 
                     type="text" 
                     autoComplete="off"
-                    value = {title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    name="title"
+                    value = {formData.title}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -55,8 +67,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="description" 
                     type="text" 
                     autoComplete="off"
-                    value = {description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    name="description"
+                    value = {formData.description}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -65,8 +78,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="inventory" 
                     type="number" 
                     autoComplete="off"
-                    value = {inventory}
-                    onChange={(e) => setInventory(e.target.value)}
+                    name="inventory"
+                    value = {formData.inventory}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -75,8 +89,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="retailPrice" 
                     type="number" 
                     autoComplete="off"
-                    value = {retailPrice}
-                    onChange={(e) => setRetailPrice(e.target.value)}
+                    name="retail_price"
+                    value = {formData.retail_price}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -85,8 +100,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="sku" 
                     type="text" 
                     autoComplete="off"
-                    value = {sku}
-                    onChange={(e) => setSku(e.target.value)}
+                    name="SKU"
+                    value = {formData.SKU}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -95,8 +111,9 @@ function ProductUpdateForm({product, setDisplayedProduct, setShowProductUpdateFr
                     id="image" 
                     type="text" 
                     autoComplete="off"
-                    value = {image}
-                    onChange={(e) => setImage(e.target.value)}
+                    name="image"
+                    value = {formData.image}
+                    onChange={handleChange}
                 />
             </Form.Group>
             <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Submit"}</Button>
