@@ -1,8 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Accordion, ListGroup, ButtonGroup, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
+import CategoryDetail from './CategoryDetail';
 
 function CategoryAccordionItem({category, products}){
+
+    const [showCategoryDetail, setShowCategoryDetail] = useState(false)
+
     const productsWithCategory = products.filter(product => product.categories.find(c => c.id === category.id))
     return (
         <Accordion.Item key={category.id} eventKey={category.id}>
@@ -15,10 +19,15 @@ function CategoryAccordionItem({category, products}){
                                                     </ListGroup.Item>)}
                 </ListGroup>
                 <ButtonGroup className="mt-3">
-                    <Button variant="outline-dark">Detail</Button>
+                    <Button onClick={() => setShowCategoryDetail(!showCategoryDetail) }variant="outline-dark">
+                        {showCategoryDetail ? "Cancel" : "Detail"}
+                    </Button>
                     <Button variant="outline-dark">Update</Button>
                     <Button variant="outline-dark">Delete</Button>
                 </ButtonGroup>
+
+                {/* Category Detail */}
+                {showCategoryDetail ? <CategoryDetail category={category}/> : null}
             </Accordion.Body>
         </Accordion.Item>
     )   
