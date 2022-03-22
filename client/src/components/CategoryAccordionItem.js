@@ -3,9 +3,7 @@ import {Accordion, ListGroup} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 function CategoryAccordionItem({category, products}){
-
     const productsWithCategory = products.filter(product => product.categories.find(c => c.id === category.id))
-
     return (
         <Accordion.Item key={category.id} eventKey={category.id}>
             <Accordion.Header>{category.name} has {category.products.length} product(s)</Accordion.Header>
@@ -17,9 +15,7 @@ function CategoryAccordionItem({category, products}){
                                                     </ListGroup.Item>)}
                 </ListGroup>
             </Accordion.Body>
-            
-        </Accordion.Item>   
-    )
+        </Accordion.Item>
+    )   
 }
-
 export default CategoryAccordionItem;

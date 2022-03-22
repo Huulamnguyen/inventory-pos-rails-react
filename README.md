@@ -82,3 +82,4 @@
 ## Improvement & Bugs
 - Refreshing the page, it shows a json format page. It seems heroku confused two port for front-end and back-end (Version Deployed on Heroku)
 - After adding a new product, it send an GET '/store/new', which is an undefined route
+- Categories from one store show up on another store.
