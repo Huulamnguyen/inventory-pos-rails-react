@@ -2,20 +2,21 @@ import React, {useState, useEffect} from 'react';
 import {Tabs, Tab, Container, Button, Row, Col} from 'react-bootstrap';
 import {useParams, useNavigate} from 'react-router-dom';
 import ProductList from './ProductList';
-import CategoryList from '../../components/CategoryList';
+import CategoryList from '../categories/CategoryList';
 import { useSelector, useDispatch } from "react-redux";
 import {fetchProducts} from "./productsSlice";
+import {fetchCategories} from "../categories/categoriesSlice";
 
 function ProductPage({user}){
     const [defaultTab, setDefaultTab] = useState('product');
     const navigate = useNavigate();
     const storeId = parseInt(useParams().id);
     const store = user.stores.find(store => store.id === storeId);
-    const [categories, setCategories] = useState([]);
 
     // Get products state from productsReducer
     const products = useSelector( state => state.products.entities.filter(product => product.store.id === store.id))
-    // Get fetchProducts action from productsReducer
+    const categories = useSelector( state => state.categories.entities)
+    // Get fetchProducts, fetchCategories actions from productsReducer
     const dispatch = useDispatch();
     
     function loadAllProducts(){
@@ -23,18 +24,13 @@ function ProductPage({user}){
     }
 
     function loadAllCategories(){
-        fetch("/categories")
-        .then(r => {
-            if(r.ok){
-                r.json().then(categories => setCategories(categories))
-            }
-        })
+        dispatch(fetchCategories());
     }
 
     useEffect(() => {
         loadAllProducts();
         loadAllCategories();
-    }, [dispatch])
+    }, [])
 
     return (
         <Container>
