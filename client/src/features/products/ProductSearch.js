@@ -1,5 +1,5 @@
 import React from 'react';
-import {Stack, Form, Button} from 'react-bootstrap';
+import {Stack, Form, Button, Row, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
 function ProductSearch({search, setSearch, storeId}){
@@ -14,11 +14,13 @@ function ProductSearch({search, setSearch, storeId}){
         </Stack>
         {/* <Row className="mt-3">
             <Col>
-                <Form.Label>Category</Form.Label>
-                <Form.Select>
-                    <option>All</option>
-                    {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
-                </Form.Select>
+                <Form onChange={handleChange}>
+                    <Form.Label>Category</Form.Label>
+                    <Form.Select>
+                        <option>All Categories</option>
+                        {categories.map(category => <option key={category.id} value={category.id}>{category.name}</option>)}
+                    </Form.Select>
+                </Form>
             </Col>
             <Col>
                 <Form.Label>Brands</Form.Label>
@@ -42,5 +44,4 @@ function ProductSearch({search, setSearch, storeId}){
         </>
     )
 }
-
 export default ProductSearch;
