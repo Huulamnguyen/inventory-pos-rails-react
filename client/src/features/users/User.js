@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import UpdateUserForm from '../components/UpdateUserForm';
+import UpdateUserForm from './UpdateUserForm';
 import {useNavigate} from 'react-router-dom';
 import {Container, Table, Button, Alert} from 'react-bootstrap';
 
