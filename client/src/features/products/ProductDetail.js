@@ -89,7 +89,7 @@ function ProductDetail () {
             <Row className="justify-content-md-center">
             <ButtonGroup>
                 <Button onClick={() => setShowProductUpdateFrom(!showProductUpdateFrom)}className="m-3" variant="outline-dark">{showProductUpdateFrom ? "Cancel": "Edit"}</Button>
-                <Button onClick={() => handleDelete()} className="m-3" variant="outline-dark">Delete</Button>
+                <Button onClick={handleDelete} className="m-3" variant="outline-dark">Delete</Button>
             </ButtonGroup>
             </Row>
             <Row className="mb-3">

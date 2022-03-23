@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import Login from '../pages/Login';
-import StoreList from '../pages/StoreList';
-import User from '../pages/User';
+import Login from '../features/users/Login';
+import StoreList from '../features/stores/StoreList';
+import User from '../features/users/User';
 import ProductPage from '../features/products/ProductPage';
 import ProductDetail from '../features/products/ProductDetail';
 import NewProductForm from '../features/products/NewProductForm';

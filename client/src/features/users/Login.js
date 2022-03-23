@@ -1,9 +1,9 @@
 import { useState } from "react";
-import LoginForm from "../components/LoginForm";
-import SignUpForm from "../components/SignUpForm";
-import ResetPasswordForm from '../components/ResetPasswordForm';
+import LoginForm from "./LoginForm";
+import SignUpForm from "./SignUpForm";
+import ResetPasswordForm from './ResetPasswordForm';
 import {Container, Button, Figure, Row, Col} from 'react-bootstrap';
-import LoginImage from '../images/inventory-pos-final-project.png';
+import LoginImage from '../../images/inventory-pos-final-project.png';
 
 function Login({ onLogin }){
     const [showResetForm, setShowResetForm] = useState(false)

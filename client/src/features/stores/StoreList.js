@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
-import NewStoreForm from '../components/NewStoreForm';
+import NewStoreForm from './NewStoreForm';
 import {Container, Button, Alert} from 'react-bootstrap';
-import StoreAccordion from '../components/StoreAccordion';
+import StoreAccordion from './StoreAccordion';
 
 function StoreList({user}) {
 
