@@ -1,11 +1,14 @@
 import React, { useState }  from 'react';
 import {Form, Button, Alert } from 'react-bootstrap'
+import { useDispatch } from "react-redux";
+import {storeAdded} from './storesSlice';
 
-function NewStoreForm({user, setShowNewStoreForm, setStores, stores}){
+function NewStoreForm({user, setShowNewStoreForm, stores}){
     const [storeName, setStoreName] = useState("");
     const [address, setAddress] = useState("");
     const [errors, setErrors] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
+    const dispatch = useDispatch()
 
     function handleSubmitNewStore(e){
         e.preventDefault();
@@ -21,7 +24,7 @@ function NewStoreForm({user, setShowNewStoreForm, setStores, stores}){
         }).then((r) => {
             setIsLoading(false);
             if (r.ok) {
-                r.json().then(store => setStores([...stores, store])).then(setShowNewStoreForm(false))
+                r.json().then(store => dispatch(storeAdded(store))).then(setShowNewStoreForm(false))
             } else {
                 r.json().then((err) => setErrors(err.errors));
             }

@@ -21,13 +21,6 @@ const productsSlice = createSlice({
             const index = state.entities.findIndex(p => p.id === action.payload)
             state.entities.splice(index, 1);
         },
-        // productFilteredByCategory(state, action){
-        //     console.log(action.payload)
-        //     // const products = state.entities
-        //     state.entities.find(p => p.categories.filter(c => c.id === action.payload))
-        //     // .filter(p => p.categories.find(c => c.id === action.payload))
-        //     // console.log(products)
-        // }
     },
     extraReducers: {
         // handle async actions: pending, fulfilled, rejected (for errors)
