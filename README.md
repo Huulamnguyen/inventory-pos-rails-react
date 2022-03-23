@@ -58,13 +58,16 @@
 ## Category and Product:
 - Each product show a category that it associated with
 - View all categories under categories menu and each category's products
-### In Progress:
 - Create new Category
 - Edit Category
 - Delete Category
+### In Progress:
+- Assign a product with a category
+- Full CRUD for brand
 
 ### Up coming:
-- Full CRUD for Category, Brand, Supplier, Variant models
+- Full CRUD for Supplier
+- Full CRUD forVariant models
 - Full CRUD for Sale Model
 - Full CRUD for Payment Model
 - Full CRUD for Customer Model
@@ -80,6 +83,6 @@
 - Note: this application is built with Postgresql
 
 ## Improvement & Bugs
-- Refreshing the page, it shows a json format page. It seems heroku confused two port for front-end and back-end (Version Deployed on Heroku)
-- After adding a new product, it send an GET '/store/new', which is an undefined route
-- Categories from one store show up on another store.
+- It seems heroku confused two port for front-end and back-end (Version Deployed on Heroku)
+- After adding a new product, it send an GET '/store/...', which is an undefined route. Might be come from Redux
+- Categories from one store show up on another store, but not products. 
