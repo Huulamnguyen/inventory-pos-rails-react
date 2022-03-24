@@ -27,7 +27,11 @@ function ProductTable({products}) {
                         <td>${product.retail_price}</td>
                         <td>Supplier Name</td>
                         <td>Brand Name</td>
-                        <td>{product.categories.map(category => category.name)}</td>
+                        <td>
+                            <ul>
+                                {product.categories.map(category => <li>{category.name}</li>)} 
+                            </ul>
+                        </td>
                     </tr>
                 ))}
             </tbody>
