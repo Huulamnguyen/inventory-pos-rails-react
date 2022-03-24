@@ -56,18 +56,18 @@
 - Delete a product (improve state management by Redux: productsReducer)
 
 ## Category and Product:
-- Each product show a category that it associated with
-- View all categories under categories menu and each category's products
-- Create new Category
-- Edit Category
-- Delete Category
+- Show all categories
+- Show each category's products
+- Add product to a category
+- Remove the product from a category
+- Show category details
+- Update category details
+- Delete a category with its associated products
 ### In Progress:
-- Assign a product with a category
 - Full CRUD for brand
-
-### Up coming:
 - Full CRUD for Supplier
-- Full CRUD forVariant models
+- Full CRUD for Variant models
+### Up coming:
 - Full CRUD for Sale Model
 - Full CRUD for Payment Model
 - Full CRUD for Customer Model
