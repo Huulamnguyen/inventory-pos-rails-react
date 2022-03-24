@@ -82,6 +82,15 @@ category2_product4 = CategoryProduct.create(category_id: category2.id, product_i
 category2_product5 = CategoryProduct.create(category_id: category2.id, product_id: product5.id)
 category2_product6 = CategoryProduct.create(category_id: category2.id, product_id: product6.id)
 
+### Store 1: Product and Brand
+brand1 = Brand.create(name: "Apple", description: "Apple INC")
+brand1_product1 = BrandProduct.create(brand_id: brand1.id, product_id: product1.id)
+brand1_product2 = BrandProduct.create(brand_id: brand1.id, product_id: product2.id)
+brand1_product3 = BrandProduct.create(brand_id: brand1.id, product_id: product3.id)
+brand1_product4 = BrandProduct.create(brand_id: brand1.id, product_id: product4.id)
+brand1_product5 = BrandProduct.create(brand_id: brand1.id, product_id: product5.id)
+brand1_product6 = BrandProduct.create(brand_id: brand1.id, product_id: product6.id)
+
 ### STORE 2 IPHONE CASES
 store2 = Store.create(store_name: "Case Store", address: "789 North Street, Brooklyn, NY 11789", user_id: user1.id)
 product3 = Product.create(
