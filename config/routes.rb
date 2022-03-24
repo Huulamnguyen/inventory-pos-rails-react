@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :brand_products, only: [:index, :create, :destroy]
+  resources :brands, only: [:index, :show, :update, :create, :destroy]
   resources :category_products, only: [:index, :create, :destroy]
   resources :categories, only: [:index, :show, :update, :create, :destroy]
   resources :products, only: [:index, :show, :update, :create, :destroy]
