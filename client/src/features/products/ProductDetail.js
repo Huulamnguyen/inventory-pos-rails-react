@@ -2,7 +2,7 @@ import React, {useState} from 'react';
 import {Container, Row, Col, Figure, Table, Button, ButtonGroup} from 'react-bootstrap';
 import { useLocation, useNavigate} from 'react-router-dom'
 import ProductUpdateForm from './ProductUpdateForm';
-import { useDispatch } from 'react-redux';
+import { useDispatch} from 'react-redux';
 import { productRemoved } from "./productsSlice";
 
 function ProductDetail () {
@@ -71,12 +71,16 @@ function ProductDetail () {
                                 <td>{displayedProduct.SKU}</td>
                             </tr>
                             <tr>
-                                <td>Category</td>
-                                <td>{displayedProduct.categories.map(category => category.name)}</td>
+                                <td >Category</td>
+                                <td>
+                                    <ul>
+                                        {displayedProduct.categories.map(category => <li key={category.id}>{category.name}</li>)}
+                                    </ul>
+                                </td>
                             </tr>
                             <tr>
                                 <td>Supplier</td>
-                                <td>Supplier Name</td>
+                                <td>Supplier Name</td>  
                             </tr>
                             <tr>
                                 <td>Brand</td>
