@@ -1,6 +1,6 @@
 import React from 'react';
 import { useLocation, useNavigate} from 'react-router-dom';
-import {Container, Row, Col, Button, Table, ListGroup} from 'react-bootstrap';
+import {Container, Row, Col, Button, Table, ListGroup, ButtonGroup} from 'react-bootstrap';
 
 
 function BrandDetail(){
@@ -31,6 +31,11 @@ function BrandDetail(){
             <ListGroup>
                 {brand.products.map(p => <ListGroup.Item key={p.id} >{p.title}</ListGroup.Item>)}
             </ListGroup>
+
+            <ButtonGroup className="mt-3">
+                <Button className="btn-sm" variant="outline-dark">Update</Button>
+            </ButtonGroup>
+
         </Container>
         
     )
