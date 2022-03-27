@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Container, Row, Col, Figure, Table, Button, ButtonGroup} from 'react-bootstrap';
-import { useLocation, useNavigate} from 'react-router-dom'
+import { useLocation, useNavigate} from 'react-router-dom';
 import ProductUpdateForm from './ProductUpdateForm';
 import { useDispatch} from 'react-redux';
 import { productRemoved } from "./productsSlice";
@@ -84,7 +84,11 @@ function ProductDetail () {
                             </tr>
                             <tr>
                                 <td>Brand</td>
-                                <td>Brand Name</td>
+                                <td>
+                                    <ul>
+                                        {displayedProduct.brands.map(brand => <li key={brand.id}>{brand.name}</li>)}
+                                    </ul>
+                                </td>
                             </tr>
                         </tbody>
                     </Table>

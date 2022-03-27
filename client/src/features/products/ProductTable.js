@@ -26,10 +26,14 @@ function ProductTable({products}) {
                         <td>{product.inventory}</td>
                         <td>${product.retail_price}</td>
                         <td>Supplier Name</td>
-                        <td>Brand Name</td>
                         <td>
                             <ul>
-                                {product.categories.map(category => <li>{category.name}</li>)} 
+                                {product.brands.map(brand => <li key={brand.id}>{brand.name}</li>)}
+                            </ul>
+                        </td>
+                        <td>
+                            <ul>
+                                {product.categories.map(category => <li key={category.id}>{category.name}</li>)} 
                             </ul>
                         </td>
                     </tr>
