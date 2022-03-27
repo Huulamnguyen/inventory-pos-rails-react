@@ -3,9 +3,11 @@ import {Tabs, Tab, Container, Button, Row, Col} from 'react-bootstrap';
 import {useParams, useNavigate} from 'react-router-dom';
 import ProductList from './ProductList';
 import CategoryList from '../categories/CategoryList';
+import BrandList from '../brands/BrandList';
 import { useSelector, useDispatch } from "react-redux";
 import {fetchProducts} from "./productsSlice";
 import {fetchCategories} from "../categories/categoriesSlice";
+import {fetchBrands} from "../brands/brandsSlice";
 
 function ProductPage({user}){
     // const [defaultTab, setDefaultTab] = useState('product');
@@ -17,6 +19,8 @@ function ProductPage({user}){
     // Get products state from productsReducer
     const products = useSelector( state => state.products.entities.filter(product => product.store.id === store.id))
     const categories = useSelector( state => state.categories.entities)
+    const brands = useSelector( state => state.brands.entities)
+
     // Get fetchProducts, fetchCategories actions from productsReducer
     const dispatch = useDispatch();
     
@@ -34,10 +38,15 @@ function ProductPage({user}){
             .then(data => setCategoryProducts(data))
     };
 
+    function loadAllBrands(){
+        dispatch(fetchBrands());
+    };
+
     useEffect(() => {
         loadAllProducts();
         loadAllCategories();
         loadAllCategoryProducts();
+        loadAllBrands()
     }, [])
 
     return (
@@ -56,7 +65,7 @@ function ProductPage({user}){
                         <CategoryList products={products} categories={categories} categoryProducts={categoryProducts}/>
                     </Tab>
                     <Tab eventKey="brand" title="Brand">
-                        <p>Brand List</p>
+                        <BrandList brands={brands} products={products}/>
                     </Tab>
                     <Tab eventKey="supplier" title="Suppliers">
                         <p>Supplier List</p>
