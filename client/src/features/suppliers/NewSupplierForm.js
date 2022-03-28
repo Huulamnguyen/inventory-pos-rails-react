@@ -92,10 +92,10 @@ function NewSupplierForm({setShowNewSupplierForm}){
                         onChange={handleChange}
                     />
                 </Form.Group>
-                <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Update"}</Button>
-                {/* {errors.map(error => (
+                <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Add New Supplier"}</Button>
+                {errors.map(error => (
                     <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
-                ))} */}
+                ))}
             </Form>
         </div>
     )

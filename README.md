@@ -71,8 +71,17 @@
 - Show brand details
 - Update brand details
 - Delete a brand with its associated products
+
+## Supplier and Product:
+- Show all suppliers
+- Show each supplier's products
+- Add product to a supplier
+- Remove the product from a supplier
+- Show supplier detail
+- Update supplier details
+- Delete a supplier with its associated products
+
 ### In Progress:
-- Full CRUD for Supplier
 - Full CRUD for Variant models
 ### Up coming:
 - Full CRUD for Sale Model
