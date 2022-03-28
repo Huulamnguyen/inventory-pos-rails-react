@@ -63,8 +63,15 @@
 - Show category details
 - Update category details
 - Delete a category with its associated products
+## Brand and Product:
+- Show all brands
+- Show each brand's products
+- Add product to a brand
+- Remove the product from a brand
+- Show brand details
+- Update brand details
+- Delete a brand with its associated products
 ### In Progress:
-- Full CRUD for brand
 - Full CRUD for Supplier
 - Full CRUD for Variant models
 ### Up coming:

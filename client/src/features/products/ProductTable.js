@@ -22,7 +22,7 @@ function ProductTable({products}) {
                 {products.map(product => (
                     <tr key ={product.id}>
                         <td><Figure.Image width={50} alt={product.title} src={product.image}></Figure.Image></td>
-                        <td><Link to={`/products/${product.id}`} state={product}>{product.title}</Link></td>
+                        <td><Link to={`/product/${product.id}`} state={product}>{product.title}</Link></td>
                         <td>{product.inventory}</td>
                         <td>${product.retail_price}</td>
                         <td>Supplier Name</td>

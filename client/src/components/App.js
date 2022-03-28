@@ -49,9 +49,9 @@ function App() {
     <div>
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
-        <Route path="/brands/:id" element={<BrandDetail />} />
+        <Route path="/brand/:id" element={<BrandDetail />} />
         <Route path="/products/new" element={<NewProductForm />} />
-        <Route path="products/:id" element={<ProductDetail />} />
+        <Route path="/product/:id" element={<ProductDetail />} />
         <Route path="/store/:id" element={<ProductPage user={user} />} />
         <Route path="/users" element={<User user={user} setUser={setUser} />} />
         <Route path="/" element={<StoreList user={user} setUser={setUser} />} />

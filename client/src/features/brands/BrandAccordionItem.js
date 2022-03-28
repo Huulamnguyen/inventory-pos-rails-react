@@ -23,13 +23,13 @@ function BrandAccordionItem({brand, products, brandProducts}){
                 <ListGroup as="ol" numbered>
                     {productsWithBrand.map(p => 
                             <ListGroup.Item key={p.id} as="li">
-                                <Link className="full" to={`/products/${p.id}`} state={p}>{p.title}</Link>
+                                <Link className="full" to={`/product/${p.id}`} state={p}>{p.title}</Link>
                                 <Button value={p.id} onClick={e => handleRemove(e)} className="m-3 btn-sm" variant="outline-dark">Remove</Button>
                             </ListGroup.Item>
                         )}
                 </ListGroup>
                 <Link 
-                    to={`/brands/${brand.id}`}
+                    to={`/brand/${brand.id}`}
                     state={{brand: brand, allProducts: products}}
                     >
                     <Button className="mt-3" variant="outline-dark">Detail</Button>

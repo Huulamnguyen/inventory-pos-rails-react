@@ -44,7 +44,7 @@ function CategoryAccordionItem({category, products, categoryProducts}){
                 <ListGroup as="ol" numbered>
                     {productsWithCategory.map(p => 
                                                     <ListGroup.Item key={p.id} as="li">
-                                                        <Link className="full" to={`/products/${p.id}`} state={p}>{p.title}</Link>
+                                                        <Link className="full" to={`/product/${p.id}`} state={p}>{p.title}</Link>
                                                         <Button className="m-3 btn-sm" value={p.id} onClick={e => handleRemove(e)} variant="outline-dark">Remove</Button>
                                                     </ListGroup.Item>
                                                 )}
