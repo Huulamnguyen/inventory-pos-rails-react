@@ -25,7 +25,11 @@ function ProductTable({products}) {
                         <td><Link to={`/product/${product.id}`} state={product}>{product.title}</Link></td>
                         <td>{product.inventory}</td>
                         <td>${product.retail_price}</td>
-                        <td>Supplier Name</td>
+                        <td>
+                            <ul>
+                                {product.suppliers.map(supplier => <li key={supplier.id}>{supplier.name}</li>)}
+                            </ul>
+                        </td>
                         <td>
                             <ul>
                                 {product.brands.map(brand => <li key={brand.id}>{brand.name}</li>)}

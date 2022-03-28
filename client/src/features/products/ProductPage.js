@@ -4,10 +4,12 @@ import {useParams, useNavigate} from 'react-router-dom';
 import ProductList from './ProductList';
 import CategoryList from '../categories/CategoryList';
 import BrandList from '../brands/BrandList';
+import SupplierList from '../suppliers/SupplierList';
 import { useSelector, useDispatch } from "react-redux";
 import {fetchProducts} from "./productsSlice";
 import {fetchCategories} from "../categories/categoriesSlice";
 import {fetchBrands} from "../brands/brandsSlice";
+import {fetchSuppliers} from "../suppliers/suppliersSlice";
 
 function ProductPage({user}){
     const [categoryProducts, setCategoryProducts] = useState();
@@ -20,8 +22,8 @@ function ProductPage({user}){
     const products = useSelector( state => state.products.entities.filter(product => product.store.id === store.id))
     const categories = useSelector( state => state.categories.entities)
     const brands = useSelector( state => state.brands.entities)
+    const suppliers = useSelector(state => state.suppliers.entities)
 
-    // Get fetchProducts, fetchCategories actions from productsReducer
     const dispatch = useDispatch();
     
     function loadAllProducts(){
@@ -48,12 +50,17 @@ function ProductPage({user}){
             .then(data => setBrandProducts(data))
     }
 
+    function loadAllSuppliers(){
+        dispatch(fetchSuppliers())
+    }
+
     useEffect(() => {
         loadAllProducts();
         loadAllCategories();
         loadAllCategoryProducts();
         loadAllBrands();
         loadAllBrandProducts();
+        loadAllSuppliers();
     }, [])
 
     return (
@@ -75,7 +82,7 @@ function ProductPage({user}){
                         <BrandList brands={brands} products={products} brandProducts={brandProducts} />
                     </Tab>
                     <Tab eventKey="supplier" title="Suppliers">
-                        <p>Supplier List</p>
+                        <SupplierList suppliers={suppliers} products={products}/>
                     </Tab>
                 </Tabs>
             </Row>

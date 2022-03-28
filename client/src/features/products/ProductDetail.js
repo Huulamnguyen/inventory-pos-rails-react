@@ -80,7 +80,11 @@ function ProductDetail () {
                             </tr>
                             <tr>
                                 <td>Supplier</td>
-                                <td>Supplier Name</td>  
+                                <td>
+                                    <ul>
+                                        {displayedProduct.suppliers.map(supplier => <li key={supplier.id}>{supplier.name}</li>)}
+                                    </ul>
+                                </td>  
                             </tr>
                             <tr>
                                 <td>Brand</td>
