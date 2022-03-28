@@ -9,7 +9,6 @@ function BrandAccordionItem({brand, products, brandProducts}){
     const [showRemovedMessage, setShowRemovedMessage] = useState(false)
     function handleRemove(e){
         const brandProduct = brandProducts.find(brandProduct => brandProduct.product.id == e.target.value && brandProduct.brand.id == brand.id)
-        console.log(brandProduct)
         fetch(`/brand_products/${brandProduct.id}`, {
             method: "DELETE"
         }).then(setShowRemovedMessage(true))

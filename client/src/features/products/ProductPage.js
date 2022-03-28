@@ -14,6 +14,7 @@ import {fetchSuppliers} from "../suppliers/suppliersSlice";
 function ProductPage({user}){
     const [categoryProducts, setCategoryProducts] = useState();
     const [brandProducts, setBrandProducts] = useState();
+    const [supplierProducts, setSupplierProducts] = useState();
     const navigate = useNavigate();
     const storeId = parseInt(useParams().id);
     const store = user.stores.find(store => store.id === storeId);
@@ -54,6 +55,12 @@ function ProductPage({user}){
         dispatch(fetchSuppliers())
     }
 
+    function loadAllSupplierProducts(){
+        fetch("/supplier_products")
+            .then(r=>r.json())
+            .then(data => setSupplierProducts(data))
+    }
+
     useEffect(() => {
         loadAllProducts();
         loadAllCategories();
@@ -61,6 +68,7 @@ function ProductPage({user}){
         loadAllBrands();
         loadAllBrandProducts();
         loadAllSuppliers();
+        loadAllSupplierProducts()
     }, [])
 
     return (
@@ -82,7 +90,7 @@ function ProductPage({user}){
                         <BrandList brands={brands} products={products} brandProducts={brandProducts} />
                     </Tab>
                     <Tab eventKey="supplier" title="Suppliers">
-                        <SupplierList suppliers={suppliers} products={products}/>
+                        <SupplierList suppliers={suppliers} products={products} supplierProducts={supplierProducts} />
                     </Tab>
                 </Tabs>
             </Row>
