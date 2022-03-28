@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :sale_details
+  resources :sales, only: [:index, :create, :show, :update, :destroy]
   resources :supplier_products, only: [:index, :create, :destroy]
   resources :suppliers, only: [:index, :show, :update, :create, :destroy]
   resources :brand_products, only: [:index, :create, :destroy]

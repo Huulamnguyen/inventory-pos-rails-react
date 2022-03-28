@@ -14,6 +14,10 @@ class Product < ApplicationRecord
   has_many :supplier_products
   has_many :suppliers, through: :supplier_products
 
+  # Association with Sale Model
+  has_many :sale_details
+  has_many :sales, through: :sale_details
+
   validates :title, presence: true
   validates :inventory, presence: true, numericality: { greater_than_or_equal_to: 0}
   validates :retail_price, presence: true, numericality: { greater_than_or_equal_to: 0}
