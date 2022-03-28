@@ -17,12 +17,12 @@ function StoreAccordionItem({store, handleDelete}){
                     <Button onClick={() => setShowUpdateStoreForm(!showUpdateStoreForm)} variant="outline-dark">{showUpdateStoreForm?"Cancel":"Edit"}</Button>
                     <Button onClick={() => handleDelete(displayedStore.id)} variant="outline-dark">Delete</Button>
                     <Button as={Link} to={`/store/${displayedStore.id}`} variant="outline-dark">Manage</Button>
-                    <Button variant="outline-dark">Sale</Button>
+                    <Button as={Link} to="/sale" variant="outline-dark">Sale</Button>
                 </ButtonGroup>
                 {showUpdateStoreForm ? <UpdateStoreForm store={displayedStore} setDisplayedStore={setDisplayedStore} setShowUpdateStoreForm={setShowUpdateStoreForm} /> : null}
             </Accordion.Body>
         </Accordion.Item>
     )
-}
+}                   
 
 export default StoreAccordionItem;
