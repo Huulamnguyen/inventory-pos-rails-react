@@ -5,6 +5,7 @@ import User from '../features/users/User';
 import ProductPage from '../features/products/ProductPage';
 import ProductDetail from '../features/products/ProductDetail';
 import BrandDetail from '../features/brands/BrandDetail';
+import SupplierDetail from '../features/suppliers/SupplierDetail';
 import NewProductForm from '../features/products/NewProductForm';
 import NavBar from './NavBar';
 import { Routes, Route, useNavigate } from "react-router-dom";
@@ -49,6 +50,7 @@ function App() {
     <div>
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
+        <Route path="/supplier/:id" element={<SupplierDetail />} />
         <Route path="/brand/:id" element={<BrandDetail />} />
         <Route path="/products/new" element={<NewProductForm />} />
         <Route path="/product/:id" element={<ProductDetail />} />

@@ -1,32 +1,34 @@
 import React, {useState} from 'react';
 import {ListGroup, Button, Alert} from 'react-bootstrap';
 
-function AllProducts({displayedBrand, allProducts}){
+function AllProducts({displayedSupplier, allProducts}){
 
     const [errors, setErrors] = useState([]);
     const [showAddedAlert, setShowAddedAlert] = useState(false)
 
     function handleClick(e){
-        const newBrandProduct = {
-            brand_id: displayedBrand.id,
+        const newSupplierProduct = {
+            supplier_id: displayedSupplier.id,
             product_id: e.target.value
         }
-        fetch("/brand_products", {
+
+        fetch("/supplier_products", {
             method: "POST",
             headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(newBrandProduct)
+            body: JSON.stringify(newSupplierProduct)
         }).then(r => {
             if(r.ok){
-                r.json().then(newBrandProduct).then(setShowAddedAlert(true))
+                r.json().then(newSupplierProduct).then(setShowAddedAlert(true))
             } else {
                 r.json().then(err => setErrors(err.errors))
             }
         })
     }
 
+
     return (
         <div className="mt-3">
-            <p>Add products to this {displayedBrand.name} brand</p>
+            <p>Add products to this {displayedSupplier.name} brand</p>
             {errors.map(error => (
                 <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
             ))}
@@ -42,4 +44,4 @@ function AllProducts({displayedBrand, allProducts}){
     )
 }
 
-export default AllProducts; 
+export default AllProducts;
