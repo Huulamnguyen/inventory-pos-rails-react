@@ -10,7 +10,6 @@ import {fetchCategories} from "../categories/categoriesSlice";
 import {fetchBrands} from "../brands/brandsSlice";
 
 function ProductPage({user}){
-    // const [defaultTab, setDefaultTab] = useState('product');
     const [categoryProducts, setCategoryProducts] = useState();
     const [brandProducts, setBrandProducts] = useState();
     const navigate = useNavigate();

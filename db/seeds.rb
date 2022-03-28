@@ -91,6 +91,17 @@ brand1_product4 = BrandProduct.create(brand_id: brand1.id, product_id: product4.
 brand1_product5 = BrandProduct.create(brand_id: brand1.id, product_id: product5.id)
 brand1_product6 = BrandProduct.create(brand_id: brand1.id, product_id: product6.id)
 
+### Store 1: Product and Supplier
+supplier1 = Supplier.create(name: "Watch Distributor", address:"123 South St, Brooklyn, New York 11236", phone:"789-654-123", email:"watchdistributor@gmail.com")
+supplier1_product1 = SupplierProduct.create(supplier_id: supplier1.id, product_id: product1.id)
+supplier1_product2 = SupplierProduct.create(supplier_id: supplier1.id, product_id: product2.id)
+supplier1_product3 = SupplierProduct.create(supplier_id: supplier1.id, product_id: product3.id)
+
+supplier2 = Supplier.create(name: "Tech Distributor", address:"456 North St, Brooklyn, New York 11456", phone:"987-654-123", email:"techdistributor@gmail.com")
+supplier2_product4 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product4.id)
+supplier2_product5 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product5.id)
+supplier2_product6 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product6.id)
+
 ### STORE 2 IPHONE CASES
 store2 = Store.create(store_name: "Case Store", address: "789 North Street, Brooklyn, NY 11789", user_id: user1.id)
 product3 = Product.create(
