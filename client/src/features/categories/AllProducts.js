@@ -8,18 +8,17 @@ function AllProducts({category, products}){
     const [showAddedAlert, setShowAddedAlert] = useState(false)
 
     function handleClick(e){
-        const NewCategoryProduct = {
+        const newCategoryProduct = {
             category_id: category.id,
             product_id: e.target.value
         }
-
         fetch("/category_products", {
             method: "POST",
             headers: {"Content-Type": "application/json"},
-            body: JSON.stringify(NewCategoryProduct)
+            body: JSON.stringify(newCategoryProduct)
         }).then(r => {
             if(r.ok){
-                r.json().then(NewCategoryProduct => NewCategoryProduct).then(setShowAddedAlert(!showAddedAlert))
+                r.json().then(newCategoryProduct).then(setShowAddedAlert(!showAddedAlert))
             }else{
                 r.json().then(err => setErrors(err.errors))
             }

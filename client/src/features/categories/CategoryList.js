@@ -12,7 +12,7 @@ function CategoryList({categories, products, categoryProducts}) {
         <Accordion>
             {categories.map(category => <CategoryAccordionItem key={category.id} category={category} products={products} categoryProducts={categoryProducts} />)}
         </Accordion>
-        <Button onClick={() => setShowNewCategoryForm(!showNewCategoryForm)} className="mt-3" variant="outline-dark">{showNewCategoryForm ? "Cancel" : "Add New Category"}</Button>
+        <Button onClick={() => setShowNewCategoryForm(!showNewCategoryForm)} className="mt-3 btn-sm" variant="outline-dark">{showNewCategoryForm ? "Cancel" : "Add New Category"}</Button>
         {showNewCategoryForm ? <NewCategoryForm setShowNewCategoryForm={setShowNewCategoryForm}/> : null}
         </>
     )
