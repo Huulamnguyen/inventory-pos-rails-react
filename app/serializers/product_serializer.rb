@@ -4,4 +4,5 @@ class ProductSerializer < ActiveModel::Serializer
   has_many :categories
   has_many :brands
   has_many :suppliers
+  has_many :sales
 end

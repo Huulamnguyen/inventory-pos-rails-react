@@ -102,6 +102,16 @@ supplier2_product4 = SupplierProduct.create(supplier_id: supplier2.id, product_i
 supplier2_product5 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product5.id)
 supplier2_product6 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product6.id)
 
+### Store 1: Product and Sale
+sale1 =  Sale.create(tax: 0.089, store_id: store1.id)
+sale1_detail_1 = SaleDetail.create(product_id: product1.id, sale_id: sale1.id, quantity: 2)
+sale1_detail_2 = SaleDetail.create(product_id: product2.id, sale_id: sale1.id, quantity: 1)
+sale1_detail_3 = SaleDetail.create(product_id: product3.id, sale_id: sale1.id, quantity: 1)
+product1.update(inventory: product1.inventory - sale1_detail_1.quantity)
+product2.update(inventory: product2.inventory - sale1_detail_2.quantity)
+product3.update(inventory: product3.inventory - sale1_detail_3.quantity)
+
+
 ### STORE 2 IPHONE CASES
 store2 = Store.create(store_name: "Case Store", address: "789 North Street, Brooklyn, NY 11789", user_id: user1.id)
 product3 = Product.create(
