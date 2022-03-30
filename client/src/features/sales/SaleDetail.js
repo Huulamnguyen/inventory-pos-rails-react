@@ -13,8 +13,6 @@ function SaleDetail(){
     const [search, setSearch] = useState("")
     const displayedProducts = [...store.products].filter(p => p.title.toLowerCase().includes(search.toLowerCase()))
     const [saleDetails, setSaleDetails] = useState(sale.sale_details)
-    // const [totalQty, setTotalQty] = useState(sale.total_quantity)
-    // const [totalPrice, setTotalPrice] = useState(sale.total_price)
 
     function handleAddProduct(product){
         const newSaleDetail = {
@@ -29,14 +27,6 @@ function SaleDetail(){
         })
             .then(r=>r.json())
             .then(newSaleDetail => setSaleDetails([...saleDetails, newSaleDetail]))
-
-        // fetch(`/products/${product.id}`,{
-        //     method: "PATCH",
-        //     headers: {"Content-Type": "application/json"},
-        //     body: JSON.stringify({
-        //         inventory: product.inventory - newSaleDetail.quantity
-        //     })
-        // }).then(r=>r.json())
     }
 
     return (
