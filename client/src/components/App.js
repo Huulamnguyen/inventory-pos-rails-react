@@ -8,7 +8,9 @@ import BrandDetail from '../features/brands/BrandDetail';
 import SupplierDetail from '../features/suppliers/SupplierDetail';
 import NewProductForm from '../features/products/NewProductForm';
 import Sale from '../features/sales/Sale';
+import SaleDetail from '../features/sales/SaleDetail';
 import NavBar from './NavBar';
+import Footer from './Footer';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import {Alert, Container} from 'react-bootstrap';
 
@@ -51,6 +53,7 @@ function App() {
     <div>
       <NavBar user={user} handleLogOutClick={handleLogOutClick} />
       <Routes>
+        <Route path="/sale/:id" element={<SaleDetail />} />
         <Route path="/sale" element={<Sale />} />
         <Route path="/supplier/:id" element={<SupplierDetail />} />
         <Route path="/brand/:id" element={<BrandDetail />} />
@@ -60,6 +63,7 @@ function App() {
         <Route path="/users" element={<User user={user} setUser={setUser} />} />
         <Route path="/" element={<StoreList user={user} setUser={setUser} />} />
       </Routes>
+      <Footer />
     </div>
   );
 }

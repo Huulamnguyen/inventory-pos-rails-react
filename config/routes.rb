@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :sale_details
+  resources :sale_details, only: [:index, :create, :destroy, :update]
   resources :sales, only: [:index, :create, :show, :update, :destroy]
   resources :supplier_products, only: [:index, :create, :destroy]
   resources :suppliers, only: [:index, :show, :update, :create, :destroy]

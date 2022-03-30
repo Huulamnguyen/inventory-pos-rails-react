@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {ButtonGroup, Button, Accordion} from 'react-bootstrap';
 import UpdateStoreForm from './UpdateStoreForm';
 import {Link} from 'react-router-dom';
@@ -17,7 +17,7 @@ function StoreAccordionItem({store, handleDelete}){
                     <Button onClick={() => setShowUpdateStoreForm(!showUpdateStoreForm)} variant="outline-dark">{showUpdateStoreForm?"Cancel":"Edit"}</Button>
                     <Button onClick={() => handleDelete(displayedStore.id)} variant="outline-dark">Delete</Button>
                     <Button as={Link} to={`/store/${displayedStore.id}`} variant="outline-dark">Manage</Button>
-                    <Button as={Link} to="/sale" variant="outline-dark">Sale</Button>
+                    <Link className="btn btn-outline-dark mx-3" to="/sale" state={{store: store}}>Sale</Link>
                 </ButtonGroup>
                 {showUpdateStoreForm ? <UpdateStoreForm store={displayedStore} setDisplayedStore={setDisplayedStore} setShowUpdateStoreForm={setShowUpdateStoreForm} /> : null}
             </Accordion.Body>
