@@ -1,6 +1,7 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Card, ListGroup, Button} from 'react-bootstrap';
 import SaleDetailItem from './SaleDetailItem';
+import {Link} from 'react-router-dom';
 
 function SaleProcess({currentSale, saleDetails, setSaleDetails}){
 
@@ -10,7 +11,16 @@ function SaleProcess({currentSale, saleDetails, setSaleDetails}){
             <Card.Body>
                 <ListGroup>{saleDetails.map(sale_detail => <SaleDetailItem saleDetails={saleDetails} setSaleDetails={setSaleDetails} sale_detail={sale_detail}/>)}</ListGroup>
             </Card.Body>
-            <Button variant="outline-dark">Checkout</Button>
+
+            <div className="m-auto mw-100 mb-3">
+                <Link 
+                    to={`/sale/${currentSale.id}/checkout`}
+                    state={{sale: currentSale}}
+                >
+                    <Button variant="outline-dark">Checkout</Button>
+                </Link>
+            </div>
+            
         </Card>
             // <br></br>
             // <li>Total Quantity: {currentSale.total_quantity}</li>
