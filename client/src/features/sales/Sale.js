@@ -2,8 +2,8 @@ import React, {useState, useEffect} from 'react';
 import {Container, Button, Row, Col, ListGroup, Accordion, ButtonGroup} from 'react-bootstrap';
 import {useNavigate, useLocation} from 'react-router-dom';
 import {Link} from 'react-router-dom';
-// import { useSelector, useDispatch } from "react-redux";
-// import {fetchProducts} from "../products/productsSlice";
+import { useSelector, useDispatch } from "react-redux";
+import {fetchProducts} from "../products/productsSlice";
 
 function Sale(){
     const location = useLocation();
@@ -24,7 +24,7 @@ function Sale(){
     function handleCreateNewSale(){
         const newSale = {
             tax: 0.089,
-            store_id: store.id
+            store_id: store.id,
         }
         fetch("/sales",{
             method: "POST",

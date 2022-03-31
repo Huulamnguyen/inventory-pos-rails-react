@@ -111,6 +111,10 @@ product1.update(inventory: product1.inventory - sale1_detail_1.quantity)
 product2.update(inventory: product2.inventory - sale1_detail_2.quantity)
 product3.update(inventory: product3.inventory - sale1_detail_3.quantity)
 
+### Store 1: Customer
+customer1 = Customer.create(first_name: "Jim", last_name: "Harpert", address:"123 Main Street, Garden City, NY 11345", phone: "123-234-3456", store_id:store1.id )
+customer2 = Customer.create(first_name: "Monica", last_name: "Geller", address:"456 River Street, Garden City, NY 11345", phone: "987-234-3456", store_id:store1.id)
+customer3 = Customer.create(first_name: "Ross", last_name: "Geller", address:"678 Fulton Street, Brooklyn, NY 11220", phone: "987-234-3458", store_id:store1.id)
 
 ### STORE 2 IPHONE CASES
 store2 = Store.create(store_name: "Case Store", address: "789 North Street, Brooklyn, NY 11789", user_id: user1.id)

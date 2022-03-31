@@ -33,7 +33,7 @@ class SalesController < ApplicationController
     end
 
     def sale_params
-        params.permit(:total_quantity, :total_price, :tax, :store_id)
+        params.permit(:total_quantity, :total_price, :tax, :store_id, :customer_id)
     end
 
 end

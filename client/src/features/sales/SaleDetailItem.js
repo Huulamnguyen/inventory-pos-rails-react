@@ -7,6 +7,7 @@ function SaleDetailItem({sale_detail, setSaleDetails, saleDetails}){
     const [showError, setShowError] = useState(false);
     const [showEditForm, setShowEditForm] = useState(false);
     const [saleQuantity, setSaleQuantity] = useState(0)
+    const [updatedSaleDetail, setUpdatedSaleDetail] = useState(sale_detail);
 
     function handleAdd(e){
         e.preventDefault();
@@ -17,7 +18,7 @@ function SaleDetailItem({sale_detail, setSaleDetails, saleDetails}){
             body: JSON.stringify({
                 quantity: saleQuantity
             })
-        }).then(r=>r.json()).then(sale_detail => sale_detail).then(setQuantity(saleQuantity)).then(setShowEditForm(false))
+        }).then(r=>r.json()).then(saleDetail => setUpdatedSaleDetail(saleDetail)).then(setQuantity(saleQuantity)).then(setShowEditForm(false))
             
         fetch(`/products/${sale_detail.product.id}`,{
             method: "PATCH",

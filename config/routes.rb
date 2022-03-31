@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :customers, only: [:index, :create, :update, :destroy]
   resources :sale_details, only: [:index, :create, :destroy, :update]
   resources :sales, only: [:index, :create, :show, :update, :destroy]
   resources :supplier_products, only: [:index, :create, :destroy]
