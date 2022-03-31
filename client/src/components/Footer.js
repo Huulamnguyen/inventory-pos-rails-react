@@ -4,8 +4,15 @@ function Footer (){
     const [todayQuote, setTodayQuote] = useState("")
 
     // useEffect(() => {
-    //     fetch("https://zenquotes.io/api/today")
-    //     .then(r => r.json())    
+    //     fetch("https://zenquotes.io/api/today", {
+    //         mode: 'no-cors',
+    //         headers: {
+    //             'Accept': 'application/json',
+    //             "Access-Control-Allow-Origin" : "*", 
+    //             "Access-Control-Allow-Credentials" : true 
+    //         }
+    //     })
+    //     .then(r => JSON.parse(r))    
     //     .then(quote => console.log(quote))
     // }, [])
 
