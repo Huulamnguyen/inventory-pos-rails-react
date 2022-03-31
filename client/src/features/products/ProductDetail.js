@@ -4,13 +4,15 @@ import { useLocation, useNavigate} from 'react-router-dom';
 import ProductUpdateForm from './ProductUpdateForm';
 import { useDispatch} from 'react-redux';
 import { productRemoved } from "./productsSlice";
+import ProductSaleHistory from './ProductSaleHistory';
 
 function ProductDetail () {
     const navigate = useNavigate();
     const location = useLocation();
     const product = location.state
-    const [displayedProduct, setDisplayedProduct] = useState(product)
-    const [showProductUpdateFrom, setShowProductUpdateFrom] = useState(false)   
+    const [displayedProduct, setDisplayedProduct] = useState(product);
+    const [showProductUpdateFrom, setShowProductUpdateFrom] = useState(false);
+    const [showSaleHistory, setShowSaleHistory] = useState(false);
 
     const dispatch = useDispatch()
 
@@ -102,10 +104,14 @@ function ProductDetail () {
             <ButtonGroup>
                 <Button onClick={() => setShowProductUpdateFrom(!showProductUpdateFrom)}className="m-3" variant="outline-dark">{showProductUpdateFrom ? "Cancel": "Edit"}</Button>
                 <Button onClick={handleDelete} className="m-3" variant="outline-dark">Delete</Button>
+                <Button onClick={() => setShowSaleHistory(!showSaleHistory)} className="m-3" variant="outline-dark">Sale History</Button>
             </ButtonGroup>
             </Row>
             <Row className="mb-3">
                 {showProductUpdateFrom ? <ProductUpdateForm setShowProductUpdateFrom={setShowProductUpdateFrom} product={displayedProduct} setDisplayedProduct={setDisplayedProduct} /> : null}
+            </Row>
+            <Row className="mb-3">
+                {showSaleHistory ? <ProductSaleHistory sales={displayedProduct.sales} /> : null}
             </Row>
             
         </Container>

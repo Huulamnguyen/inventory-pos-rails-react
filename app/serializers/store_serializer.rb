@@ -3,4 +3,5 @@ class StoreSerializer < ActiveModel::Serializer
   has_one :user
   has_many :products
   has_many :sales
+  has_many :customers
 end

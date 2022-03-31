@@ -1,12 +1,28 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Button, ListGroup, ButtonGroup} from 'react-bootstrap';
+import NewCustomerForm from '../customers/NewCustomerForm';
+import SaleCustomerDetail from './SaleCustomerDetail';
+import SaleAllCustomersList from './SaleAllCustomersList';
 
 function SaleCheckout(){
     const navigate = useNavigate();
     const location = useLocation();
     const sale = location.state.sale
-    console.log(sale)
+    const [showAddCustomerForm, setShowCustomerForm] = useState(false)
+    const [showAllCustomersList, setShowAllCustomersList] = useState(false)
+    // const [allCustomers, setAllCustomers] = useState([]);
+
+    // function loadAllCustomer(){
+    //     fetch('/customers')
+    //         .then(r=>r.json())
+    //         .then(customersData => setAllCustomers(customersData))
+    // }
+    
+    // useEffect(() => {
+    //     loadAllCustomer();
+    // },[]);
+
     return (
         <Container>
             <Row>
@@ -31,9 +47,23 @@ function SaleCheckout(){
                 </Col>
                 <Col>
                     <ButtonGroup>
-                        <Button variant="outline-dark">Add New Customer</Button>
-                        <Button variant="outline-dark">Select Customer</Button>
+                        <Button onClick={() => {
+                            setShowCustomerForm(!showAddCustomerForm)
+                            setShowAllCustomersList(false)
+                        }} variant="outline-dark">Add New Customer</Button>
+                        <Button onClick={() => {
+                            setShowAllCustomersList(!showAllCustomersList)
+                            setShowCustomerForm(false)
+                        }} variant="outline-dark">Select Customer</Button>
                     </ButtonGroup>
+                    <div>
+                        {sale.customer ? <SaleCustomerDetail sale={sale} /> : null}
+                    </div>
+
+                    {/* Add New Customer Form */}
+                    {showAddCustomerForm ? <NewCustomerForm sale={sale} setShowCustomerForm={setShowCustomerForm}/> : null}
+                    {/* Show all customers list */}
+                    {showAllCustomersList ? <SaleAllCustomersList />: null}
                 </Col> 
             </Row>
 

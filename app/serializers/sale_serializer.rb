@@ -3,6 +3,7 @@ class SaleSerializer < ActiveModel::Serializer
   has_one :store
   # has_many :products
   has_many :sale_details
+  has_one :customer
 
   def total_quantity
     "#{object.sale_details.sum(:quantity)}"
