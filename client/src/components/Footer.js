@@ -18,7 +18,7 @@ function Footer (){
 
     return(
         <footer className="fixed-bottom bg-secondary">
-            <div className="text-center py-3">© 2020 Copyright: Inventory & POS </div>
+            <div className="text-center py-3 text-light">© 2020 Copyright: Inventory & POS </div>
         </footer>
     )
 }

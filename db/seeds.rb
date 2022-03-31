@@ -15,7 +15,7 @@ product1 = Product.create(
     title: "Starlight Aluminum Case with Braided Solo Loop - Flamingo", 
     description: "The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MN1L3ref_VW_34FR+watch-45-alum-starlight-nc-7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1645128544617%2C1631661833000",
-    inventory: 50,
+    inventory: 10,
     retail_price: 349,
     SKU: "APPLEWATCH-FLAMIGO",
     store_id: store1.id
@@ -25,7 +25,7 @@ product2 = Product.create(
     title:"Starlight Aluminum Case with Braided Solo Loop - Bright Green", 
     description: "The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MN023ref_VW_34FR+watch-41-alum-starlight-nc-7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1645128542140%2C1631661270000",
-    inventory: 55,
+    inventory: 10,
     retail_price: 359,
     SKU: "APPLEWATCH-BRIGHTGREEN",
     store_id: store1.id
@@ -35,7 +35,7 @@ product3 = Product.create(
     title:"Starlight Aluminum Case with Braided Solo Loop - Abyss Blue", 
     description: "The aluminum case is lightweight and made from 100 percent recycled aerospace-grade alloy.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ML4Q3ref_VW_34FR+watch-41-alum-starlight-nc-7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1630364929000%2C1631661270000",
-    inventory: 59,
+    inventory: 10,
     retail_price: 369,
     SKU: "APPLEWATCH-ABYSSBLUE",
     store_id: store1.id
@@ -45,7 +45,7 @@ product4 = Product.create(
     title:"Starlight Aluminum Case with Nike Sport Band - Pink Oxford/Rose Whisper", 
     description: "The Nike Sport Band is made from a durable high-performance fluoroelastomer with compression-molded perforations for breathability.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/MN6P3_VW_34FR+watch-41-alum-starlight-nc-nike7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1645128297853%2C1631662192000",
-    inventory: 69,
+    inventory: 10,
     retail_price: 359,
     SKU: "APPLEWATCHNIKE-PINKOXFORD",
     store_id: store1.id
@@ -55,7 +55,7 @@ product5 = Product.create(
     title:"Starlight Aluminum Case with Nike Sport Loop - Cargo Khaki", 
     description: "The Nike Sport Loop is made from a breathable nylon weave featuring the iconic Nike swoosh logo, in colors exclusive to Nike.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ML2V3_VW_34FR+watch-41-alum-starlight-nc-nike7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1632171190000%2C1631662192000",
-    inventory: 78,
+    inventory: 10,
     retail_price: 359,
     SKU: "APPLEWATCHNIKE-CARGOKHAKI",
     store_id: store1.id
@@ -65,7 +65,7 @@ product6 = Product.create(
     title:"Starlight Aluminum Case with Nike Sport Loop - Summit White", 
     description: "The Nike Sport Loop is made from a breathable nylon weave featuring the iconic Nike swoosh logo, in colors exclusive to Nike.",
     image: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/ML2W3_VW_34FR+watch-41-alum-starlight-nc-nike7s_VW_34FR_WF_CO?wid=700&hei=700&trim=1%2C0&fmt=p-jpg&qlt=95&.v=1632171200000%2C1631662192000",
-    inventory: 79,
+    inventory: 10,
     retail_price: 359,
     SKU: "APPLEWATCHNIKE-SUMMITWHITE",
     store_id: store1.id
@@ -102,19 +102,42 @@ supplier2_product4 = SupplierProduct.create(supplier_id: supplier2.id, product_i
 supplier2_product5 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product5.id)
 supplier2_product6 = SupplierProduct.create(supplier_id: supplier2.id, product_id: product6.id)
 
-### Store 1: Product and Sale
-sale1 =  Sale.create(tax: 0.089, store_id: store1.id)
-sale1_detail_1 = SaleDetail.create(product_id: product1.id, sale_id: sale1.id, quantity: 2)
+### Store 1: Customer
+customer1 = Customer.create(first_name: "Jim", last_name: "Harpert", address:"123 Main Street, Garden City, NY 11345", phone: "123-234-3456", store_id:store1.id )
+customer2 = Customer.create(first_name: "Monica", last_name: "Geller", address:"456 River Street, Garden City, NY 11345", phone: "987-234-3456", store_id:store1.id)
+
+### Store 1: Product and Sale & Customer
+sale1 =  Sale.create(tax: 0.089, store_id: store1.id, customer_id: customer1.id)
+sale1_detail_1 = SaleDetail.create(product_id: product1.id, sale_id: sale1.id, quantity: 1)
 sale1_detail_2 = SaleDetail.create(product_id: product2.id, sale_id: sale1.id, quantity: 1)
 sale1_detail_3 = SaleDetail.create(product_id: product3.id, sale_id: sale1.id, quantity: 1)
 product1.update(inventory: product1.inventory - sale1_detail_1.quantity)
 product2.update(inventory: product2.inventory - sale1_detail_2.quantity)
 product3.update(inventory: product3.inventory - sale1_detail_3.quantity)
 
-### Store 1: Customer
-customer1 = Customer.create(first_name: "Jim", last_name: "Harpert", address:"123 Main Street, Garden City, NY 11345", phone: "123-234-3456", store_id:store1.id )
-customer2 = Customer.create(first_name: "Monica", last_name: "Geller", address:"456 River Street, Garden City, NY 11345", phone: "987-234-3456", store_id:store1.id)
-customer3 = Customer.create(first_name: "Ross", last_name: "Geller", address:"678 Fulton Street, Brooklyn, NY 11220", phone: "987-234-3458", store_id:store1.id)
+sale2 =  Sale.create(tax: 0.089, store_id: store1.id, customer_id: customer1.id)
+sale2_detail_1 = SaleDetail.create(product_id: product4.id, sale_id: sale2.id, quantity: 1)
+sale2_detail_2 = SaleDetail.create(product_id: product5.id, sale_id: sale2.id, quantity: 1)
+sale2_detail_3 = SaleDetail.create(product_id: product6.id, sale_id: sale2.id, quantity: 1)
+product4.update(inventory: product4.inventory - sale2_detail_1.quantity)
+product5.update(inventory: product5.inventory - sale2_detail_2.quantity)
+product6.update(inventory: product6.inventory - sale2_detail_3.quantity)
+
+sale3 = Sale.create(tax: 0.089, store_id: store1.id, customer_id: customer2.id)
+sale3_detail_1 = SaleDetail.create(product_id: product1.id, sale_id: sale3.id, quantity: 1)
+sale3_detail_2 = SaleDetail.create(product_id: product2.id, sale_id: sale3.id, quantity: 1)
+sale3_detail_3 = SaleDetail.create(product_id: product3.id, sale_id: sale3.id, quantity: 1)
+product1.update(inventory: product1.inventory - sale3_detail_1.quantity)
+product2.update(inventory: product2.inventory - sale3_detail_2.quantity)
+product3.update(inventory: product3.inventory - sale3_detail_3.quantity)
+
+sale4 = Sale.create(tax: 0.089, store_id: store1.id, customer_id: customer2.id)
+sale4_detail_1 = SaleDetail.create(product_id: product4.id, sale_id: sale4.id, quantity: 1)
+sale4_detail_2 = SaleDetail.create(product_id: product5.id, sale_id: sale4.id, quantity: 1)
+sale4_detail_3 = SaleDetail.create(product_id: product6.id, sale_id: sale4.id, quantity: 1)
+product4.update(inventory: product4.inventory - sale4_detail_1.quantity)
+product5.update(inventory: product5.inventory - sale4_detail_2.quantity)
+product6.update(inventory: product6.inventory - sale4_detail_3.quantity)
 
 ### STORE 2 IPHONE CASES
 store2 = Store.create(store_name: "Case Store", address: "789 North Street, Brooklyn, NY 11789", user_id: user1.id)

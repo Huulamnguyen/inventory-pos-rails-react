@@ -101,7 +101,7 @@ function NewCustomerForm({sale, setShowCustomerForm}){
                     onChange={handleChange}
                 />
             </Form.Group>
-            <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Add New Product"}</Button>
+            <Button variant="dark" type="submit">{isLoading ? "Loading..." : "Add"}</Button>
             {errors.map(error => (
                 <Alert className="mt-3" variant="danger" key={error}>{error}</Alert>
             ))}

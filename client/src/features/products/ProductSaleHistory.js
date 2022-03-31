@@ -9,7 +9,7 @@ function ProductSaleHistory({sales}){
         <>
         {sales.length > 0 ? (
             <ListGroup>
-                {sales.map(sale => <ListGroup.Item key={sale.id}>Sale #{sale.id} - Total: ${sale.total_amount} - Quantity: ${sale.total_quantity}</ListGroup.Item>)}
+                {sales.map(sale => <ListGroup.Item key={sale.id}>Sale #{sale.id} - Total: ${sale.total_amount} - Quantity: {sale.total_quantity}</ListGroup.Item>)}
             </ListGroup>
         ): "No Sale History"}
         </>

@@ -1,5 +1,6 @@
 import React from 'react';
 import {ListGroup, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 function SaleCustomerDetail({sale}){
     return (
@@ -11,7 +12,6 @@ function SaleCustomerDetail({sale}){
             <ListGroup.Item>Address: {sale.customer.address}</ListGroup.Item>
             <ListGroup.Item>Phone: {sale.customer.phone}</ListGroup.Item>
         </ListGroup>
-        <Button className="mt-3" size="sm" variant="outline-dark">Detail</Button>
         </>
     )
 }

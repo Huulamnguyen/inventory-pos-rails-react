@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import {Container, Row, Col, Button, ListGroup, ButtonGroup} from 'react-bootstrap';
 import NewCustomerForm from '../customers/NewCustomerForm';
